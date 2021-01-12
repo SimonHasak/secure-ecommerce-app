@@ -1,0 +1,121 @@
+* {
+    color: #6e6e6e;
+}
+button {
+    border: 0;
+    outline: none;
+    background-color: transparent;
+}
+.search-window-container {
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 2000;
+    top: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+.panel-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    height: 120px;
+    padding-bottom: 20px;
+    background-color: rgba(255, 255, 255);
+}
+
+#close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 25px;
+}
+
+#reset-input {
+    font-size: 1.1rem;
+}
+
+.trigger_search {
+    padding: 0 8px 10px 8px;
+    text-decoration: none;
+    display: inline-block;
+    font-family: 'Roboto';
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 22px;
+    outline: none;
+    border: 0;
+    background-color: transparent;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+
+.input-wrapper {
+    display: inline-block;
+    border-bottom: 2px solid #6e6e6e;
+}
+
+input[type="text"].input{
+    margin-right: 28px;
+    border:0;
+    outline: 0;
+    font-size: 1.5rem;
+    width: 400px;
+    padding: 0 50px;
+    height: 40px;
+}
+
+input[type="text"].input-open::placeholder { 
+  color: #6e6e6e;
+}
+
+@media only screen and (max-width: 550px) {
+    #close-btn {
+        top: 10px;
+        right: 10px;
+        font-size: 25px;
+    }
+
+    .search-wrapper {
+        width: 85%;
+        margin-top: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        height: fit-content;
+    }
+
+    .search-window-container {
+        background-color: rgba(255, 255, 255);
+    }
+    
+    .panel-container {
+        height: 100%;
+        padding-bottom: 0px;
+        align-items: unset;
+    }
+
+    .input-wrapper {
+        width: 80%;
+    }
+
+    input[type="text"].input{
+        margin-right: 0;
+        border:0;
+        outline: 0;
+        font-size: 1rem;
+        width: 90%;
+        padding: 0;
+        height: 40px;
+    }
+    
+    #reset-input {
+        width: 10%;
+        font-size: 0.9rem;
+    }
+
+    .trigger_search {
+        margin-left: 0;
+      }
+
+}

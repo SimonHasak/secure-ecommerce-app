@@ -1,0 +1,9 @@
+<div class="carousel-wrapper">
+<carousel [showIndicators]="false"
+          [isAnimated]="true"
+          [interval]="imageSlider?.interval">
+  <slide *ngFor="let slider of imageSlider?.images">
+    <img [src]="slider.urlAddressOfImage" [alt]="slider.name" style="display: block; width: 100%;">
+  </slide>
+</carousel>
+</div>

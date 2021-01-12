@@ -1,0 +1,8 @@
+{
+  "/api/*": {
+    "target": "https://i-cube-backend.herokuapp.com",
+    "secure": false,
+    "logLevel": "debug",
+    "changeOrigin": true
+  }
+}

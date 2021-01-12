@@ -1,0 +1,34 @@
+<div class="container category-custom-container">
+<!--  <mat-spinner *ngIf="isLoading" strokeWidth="3" [diameter]="100"></mat-spinner>-->
+  <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+    <button class="btn btn-outline-dark mr-2" id="dropdownManual"
+            ngbDropdownAnchor (focus)="myDrop.open()">
+            {{ filter }}
+    </button>
+    <div ngbDropdownMenu aria-labelledby="dropdownManual">
+      <button ngbDropdownItem *ngFor="let sortValue of sortingValues; let i = index" (click)="onChange(i)">
+            {{ sortValue }}
+      </button>
+    </div>
+  </div>
+  <div class="search-results"
+    infiniteScroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="50"
+    (scrolled)="onScroll()">
+    <div class="products row">
+      <div class="product-wrapper col-md-4" *ngFor="let product of products">
+        <app-product-outlook [width]="330" [height]="370" [product]="product"></app-product-outlook>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ngx-spinner name="caregory-spinner"
+             bdColor="rgba(0, 0, 0, 0.25)"
+             size="large"
+             color="#fff"
+             type="square-jelly-box"
+             [fullScreen]="true">
+             <p style="color: white" > Loading... </p>
+</ngx-spinner>

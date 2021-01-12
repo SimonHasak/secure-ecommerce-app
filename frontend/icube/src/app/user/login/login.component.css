@@ -1,0 +1,44 @@
+.login-lable {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  font-size: 50px;
+}
+
+.title-row {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.title-row h4 {
+  font-size: 35px;
+  margin-top: 15px;
+}
+
+.title-row button {
+  position: absolute;
+  right: 0;
+  margin-right: 15px;
+}
+
+.error-message {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 17px;
+  color: red
+}
+
+.column-header {
+  position: relative;
+  height: 80px;
+}
+
+.row-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}

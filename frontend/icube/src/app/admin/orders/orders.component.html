@@ -1,0 +1,56 @@
+<div class="container">
+  <div class="margin-top">
+
+    <div class="row d-flex">
+      <div class="col"></div>
+      <div class="d-inline-block float-right" ngbDropdown #myDrop="ngbDropdown">
+        <button class="btn btn-outline-dark mr-2" id="dropdownManual"
+                ngbDropdownAnchor (focus)="myDrop.open()">
+          {{ filter }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownManual">
+          <button ngbDropdownItem *ngFor="let sortValue of sortingValues; let i = index" (click)="onChange(i)">
+            {{ sortValue }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Col1</th>
+        <th scope="col">Col2</th>
+        <th scope="col">Col3</th>
+        <th scope="col">Col4</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let order of orders; let i = index">
+        <th scope="row">{{ 1 + i + (currrentPage?.pageable?.pageNumber - 1) * currrentPage?.pageable?.pageSize }}</th>
+        <td>{{ order }}</td>
+        <td>{{ order }}</td>
+        <td>{{ order }}</td>
+        <td>
+          <button mat-stroked-button color="warn" (click)="onDelete(order)">Delete</button>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+    <ngb-pagination *ngIf="!isLoading"
+                    [collectionSize]="currrentPage.totalElements"
+                    [(page)]="currrentPage.pageable.pageNumber"
+                    [pageSize]="currrentPage.pageable.pageSize"
+                    [maxSize]="5"
+                    [rotate]="true"
+                    [boundaryLinks]="true"
+                    (pageChange)="loadPage()">
+    </ngb-pagination>
+  </div>
+
+
+
+</div>

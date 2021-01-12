@@ -1,0 +1,26 @@
+<div class="modal-body">
+  <div class="title">
+    <img src="assets/images/okay.svg">
+    <h5 class="title-name">Produkt bol pridany do kosika.</h5>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="img-wrapper">
+    <img [src]=" cartItem?.imageUrl | safeUrl ">
+  </div>
+  <div class="size">
+    <span>Velkost: </span>
+    <span>{{ cartItem?.size }}</span>
+  </div>
+  <div class="price-wrapper">
+    <span>{{ cartItem?.price }} EUR</span>
+  </div>
+  <div class="checkout-btn-wrapper">
+    <button id="checkout-btn" (click)="redirectToShoppingCart()">Pokračovať v objednávke</button>
+  </div>
+  <div class="continue-button-wrapper">
+    <button class="continue-button" (click)="activeModal.dismiss('Cross click')">Pokračovať v nákupe</button>
+  </div>
+</div>
+

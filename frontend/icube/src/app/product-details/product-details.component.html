@@ -1,0 +1,84 @@
+<section id="product-detail-section" class="row">
+    <div class="container row">
+        <div id="photo-section" class="col-12 col-md-5 offset-md-1 row">
+            <div class="image-carousel col-md-2">
+                <button *ngIf="product?.images?.length > 4" class="carousel-btn" id="carousel-up" (click)="imgSliderUp()"><i class="fa fa-angle-up"></i></button>
+                <div class="mini-pics disable-scrollbars">
+                    <div class="mini-pic-wrapper" *ngFor="let image of product?.images">
+                        <img src="{{ image?.urlAddressOfImage }}"
+                             (mouseenter)="setImageAsActive(image?.urlAddressOfImage)"
+                             alt="{{ image?.name }}">
+                    </div>
+                </div>
+                <button *ngIf="product?.images?.length > 4" class="carousel-btn" id="carousel-down" (click)="imgSliderDown()"><i class="fa fa-angle-down"></i></button>
+            </div>
+            <div class="photo-wrapper col-12 col-md-10">
+                <ngb-carousel>
+                    <ng-template ngbSlide *ngFor="let image of product?.images">
+                            <img #activeImage src="{{ image.urlAddressOfImage }}" alt="{{ image.name }}">
+                    </ng-template>
+                </ngb-carousel>
+            </div>
+
+
+        </div>
+
+        <div id="product-info" class="col-12 col-md-6">
+            <div class="product-name-wrapper">
+                <h1>{{ product?.name }}</h1>
+            </div>
+            <div class="product-price-wrapper">
+                <h1>{{ product?.price | currency:'EUR':true }}</h1>
+            </div>
+            <div *ngIf="product?.measurements?.length > 0" class="sizes-tab">
+                <span id="pick-color-text">Veľkosť</span>
+                <ul class="sizes row-custom" *ngFor="let measurement of product?.measurements">
+                  <li>{{ measurement.name }}</li>
+
+                </ul>
+            </div>
+
+            <div class="add-product-container">
+                <div class="quantity-wrapper">
+                    <input class="quantity-input" type="number" min="1" name="quantity" [value]="productQuantityToShoppingCart" size="5" maxlength="5">
+                </div>
+                <div class="add-to-cart-button-wrapper">
+                    <button id="add-button" (click)="addProductToShoppingCart(product)">
+                      <span>
+                        <i class="fa fa-shopping-cart" style="font-size: 23px;margin: 0 5px;"></i>
+                      </span>Pridať do košíka</button>
+                </div>
+            </div>
+        </div>
+        <div id="description-section" class="row col-12 offset-md-1 col-md-8">
+            <div class="description-title-wrapper">
+                <h1>Popis produktu</h1>
+            </div>
+            <div class="description-wrapper">
+                {{ product?.description }}
+                <br>
+                <br>
+                At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti
+                quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt
+                mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore
+                , cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis
+                dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et
+                molestiae non recusandae. Itaque earum rerum hic tenetur a sapiente delectus, ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis
+                doloribus asperiores repellat.
+            </div>
+        </div>
+        <mat-progress-spinner *ngIf="isLoading"
+                     mode="indeterminate"
+                     class="loading-spinner"
+                     [diameter]="70">
+        </mat-progress-spinner>
+    </div>
+</section>
+
+<ngx-spinner name="product-details-spinner"
+             bdColor="rgba(255, 255, 255, 0.99)"
+             size="large"
+             color="#000000"
+             type="square-jelly-box" [fullScreen]="true">
+  <p style="color: yellowgreen" > Loading... </p>
+</ngx-spinner>

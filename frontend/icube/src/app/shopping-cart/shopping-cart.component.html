@@ -1,0 +1,86 @@
+<section id="shopping-cart-body">
+    <div class="container row">
+        <div id="cart-sections-tabs" class="col-md-10 offset-md-1 col-sm-12">
+            <div>
+                <a routerLink="/category" id="continue-shopping">Pokračovať v nákupe</a>
+            </div>
+
+            <div id="cart-tab" class="section-tab-wrapper" (click)="activeTab = activeTabType.Cart">
+                <span class="tab-number">1</span>
+                <span class="tab-title">Košík</span>
+            </div>
+            <div class="tab-arrow">→</div>
+            <div id="shipment-payment-tab" class="section-tab-wrapper" (click)="activeTab = activeTabType.PaymentAndShipment">
+                <span class="tab-number">2</span>
+                <span class="tab-title">Doprava a platba</span>
+            </div>
+            <div class="tab-arrow">→</div>
+            <div id="customer-details-tab" class="section-tab-wrapper" (click)="activeTab = activeTabType.CustomerDetails">
+                <span class="tab-number">3</span>
+                <span class="tab-title">Fakturačné údaje</span>
+            </div>
+        </div>
+
+        <div class="payment-shipment-container col-md-7 offset-md-1 col-12" [style.display]="activeTab == activeTabType.PaymentAndShipment ? 'block': 'none'">
+            <app-payment-and-shipment (paymentSelectionEvent)="receivePaymentMethod($event)" (shipmentSelectionEvent)="receiveShipmentMethod($event)"></app-payment-and-shipment>
+        </div>
+
+        <div class="customer-details-container col-md-7 offset-md-1 col-12" [style.display]="activeTab == activeTabType.CustomerDetails ? 'block': 'none'">
+            <app-customer-details-form></app-customer-details-form>
+        </div>
+
+        <div class="products col-md-7 offset-md-1 col-12" *ngIf="activeTab == activeTabType.Cart">
+            <div class="product-container row last-item" *ngFor="let cartItem of cartItems">
+                <div class="product-image col-md-3 col-5">
+                    <img [src]=" cartItem?.imageUrl | safeUrl " alt=" {{ cartItem?.name }} ">
+                </div>
+                <div class="product-name col-md-3">
+                    {{ cartItem?.name }}
+                </div>
+                <div class="quantity col-md-3">
+                    <button class="quantity-button" (click)="minus(cartItem)"> — </button>
+                    {{ cartItem?.quantity }}
+                    <button class="quantity-button" (click)="plus(cartItem)"> + </button>
+                </div>
+                <div class="product-price col-md-3">
+                    {{ cartItem?.price }}€
+                </div>
+            </div>
+            <!-- PHONE VERSION OF PRODUCT CONTAINER -->
+            <div class="phone-product-container row last-item" *ngFor="let cartItem of cartItems; let i = index">
+                <div class="product-image col-md-3 col-5">
+                    <img [src]=" cartItem?.imageUrl | safeUrl " alt=" {{ cartItem?.name }} ">
+                </div>
+                <div class="product-info col-7">
+                    <div class="product-price">
+                        {{ cartItem?.price }}€
+                    </div>
+                    <div class="product-name">
+                        {{ cartItem?.name }}
+                    </div>
+                    <div class="quantity">
+                        <span>Počet: </span>
+                        <div class="quantity-value">
+                            <span style="margin: 0 10px;">{{ cartItem?.quantity }}</span>
+                            <div class="quantity-btns">
+                                <button style="border-bottom: 1px solid rgb(214, 214, 214);" class="quantity-button" (click)="plus(cartItem)"> + </button>
+                                <button class="quantity-button" (click)="minus(cartItem)"> — </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <span class="remove-cart-item" (click)="removeCartItem(i, cartItem)">⨉</span>
+            </div>
+        </div>
+        <div class="checkout-container col-md-3 col-12">
+            <div class="price-after-tax">
+                <span style="float:left">K úhrade</span>
+                <span style="float:right">{{priceSum}} €</span>
+            </div>
+            <div class="checkout-btn-wrapper">
+                <button id="checkout-btn" (click)="checkoutShoppingCart()">Pokračovať</button>
+            </div>
+        </div>
+    </div>
+</section>

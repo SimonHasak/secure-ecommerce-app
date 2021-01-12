@@ -1,0 +1,12 @@
+<div class="search-window-container" [style.display]="isDisplayed ? 'block' : 'none'" (click)="hideSearchWindow()">
+    <div class="panel-container" onclick="event.stopPropagation()">
+        <button id="close-btn" (click)="hideSearchWindow()">⨉</button>
+        <div class="search-wrapper">
+            <div class="input-wrapper">
+                <input #input type="text" class="input" placeholder="Vyhľadávanie" (keyup.enter)="executeSearch()"/>
+                <button id="reset-input" (click)="resetSearchValue()">⨉</button>
+            </div>
+            <a (click)="executeSearch()" class="trigger_search"><i class="fa fa-search icon"></i></a>
+        </div>
+    </div>
+</div>

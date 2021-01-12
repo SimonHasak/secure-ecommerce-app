@@ -1,0 +1,11 @@
+<div class="container search-results-container">
+    <!-- <h1 *ngIf="products.length > 0" class="search-result-title">Hľadaný výraz: "<i>{{keyword}}"</i></h1> -->
+    <!-- <h1 *ngIf="products.length === 0" class="search-result-title">Žiadne výsledky pre výraz: <i>"{{keyword}}"</i></h1> -->
+    <h1 #title class="search-result-title"></h1>
+    <div class="products row">
+        <div class="product-wrapper col-md-4" *ngFor="let product of products">
+          <app-product-outlook [width]="330" [height]="370" [product]="product" [routeToRoot]="'../../'"></app-product-outlook>
+        </div>
+      </div>
+</div>
+

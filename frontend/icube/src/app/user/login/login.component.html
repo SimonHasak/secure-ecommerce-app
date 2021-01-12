@@ -1,0 +1,52 @@
+<div class="modal-body">
+  <div class="column-header">
+    <div class="title-row">
+      <h4>Login</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="error-message">
+      <span>{{ this.errorMessage }}</span>
+    </div>
+  </div>
+
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" autocomplete="on">
+    <div class="form-group">
+      <label>Email</label>
+      <input type="text" formControlName="email" class="form-control" autocomplete="on"
+             [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div *ngIf="f.email.errors.required">Email is required</div>
+        <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Password</label>
+      <input [type]="showPassword ? 'text' : 'password'" #password formControlName="password" class="form-control"
+             [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div *ngIf="f.password.errors.required">Password is required</div>
+        <div *ngIf="f.password.errors.minlength">Password must be at least 5 characters</div>
+      </div>
+    </div>
+    <div class="row-info">
+
+      <div class="form-group form-check">
+        <input class="form-check-input" id="rememberCheck" type="checkbox" formControlName="rememberMe">
+        <label class="form-check-label" for="rememberCheck">Remember me</label>
+      </div>
+      <span (click)="changePasswordStatus()">Show password</span>
+
+    </div>
+    <div class="d-flex flex-row justify-content-center">
+      <p>Nemate este ucet?
+        <a href="#" (click)="redirectToRegistration()">Zaregistrovat sa</a>
+      </p>
+    </div>
+    <div class="d-flex">
+      <button type="submit" class="btn btn-primary w-100">Submit</button>
+    </div>
+  </form>
+</div>
+

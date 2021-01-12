@@ -1,0 +1,57 @@
+<div class="section">
+  <header id="header" class="row">
+    <!-- <div class="container col-12 col-sm-12 col-md-10 offset-md-1"> -->
+    <div class="col-12 col-sm-12 offset-md-1 col-md-10 container">
+      <div id="logo" class="pull-left col-lg-4 col-md-4">
+        <a routerLink="/admin"><img src="../../../assets/images/iCube_logo.png" alt="iCube Logo" title="icube logo" /></a>
+      </div>
+
+      <nav id="nav-menu-container" class="col-lg-8 col-md-8">
+        <ul class="nav-menu">
+          <li class="first-list-element"><a href="#" (click)="navigateTo(categories[0])">Banners</a></li>
+          <li><a href="#" (click)="navigateTo(categories[1])">Products</a></li>
+          <li><a href="#" (click)="navigateTo(categories[2])">Orders</a></li>
+          <li><a href="#" (click)="navigateTo(categories[3])">Users</a></li>
+
+          <li class="language-btn move-left"><a href="#">EN</a></li>
+          <li class="language-btn move-left left-gap"><a class="active-language" href="#">SK</a></li>
+          <li class="move-left">
+            <a href="#">
+              <i class="fa fa-user" style="font-size:21px"></i>
+            </a>
+            <ul *ngIf="isAuthenticated">
+              <li><a href="#" (click)="logOutMethodEvent()">Log Out</a></li>
+              <li><a href="#">My Profile</a></li>
+            </ul>
+          </li>
+<!--          <li class="move-left">-->
+<!--            <input type="text" class="input" placeholder="Vyhľadávanie"/>-->
+<!--            <a href="#" class="trigger_search" (click)="displaySearchWindow()"><i class="fa fa-search icon"></i></a>-->
+<!--          </li>-->
+        </ul>
+      </nav>
+    </div>
+
+    <!-- MOBILE NAVBAR-->
+    <nav id="mobile-nav" class="col-lg-8 col-md-8">
+      <ul class="nav-menu">
+        <li class="first-list-element"><a href="#" (click)="navigateTo(categories[0])">Banners</a></li>
+        <li><a href="#" (click)="navigateTo(categories[1])">Products</a></li>
+        <li><a href="#" (click)="navigateTo(categories[2])">Orders</a></li>
+        <li><a href="#" (click)="navigateTo(categories[3])">Users</a></li>
+        <li class="move-left">
+          <ul *ngIf="isAuthenticated">
+            <li><a href="#" (click)="logOutMethodEvent()">Log Out</a></li>
+            <li><a href="#">My Profile</a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </nav>
+    <!-- MOBILE NAVBAR-->
+
+  </header>
+
+
+  <a href="javascript:void(0)" class="scroll-to-top"><i class="fa fa-arrow-up"></i></a>
+</div>

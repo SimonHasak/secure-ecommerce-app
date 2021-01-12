@@ -1,0 +1,16 @@
+.product-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.category-custom-container {
+  margin-top: 200px;
+}
+
+.products {
+  margin-top: 30px;
+}
+
+.search-results {
+  height: 100%;
+}

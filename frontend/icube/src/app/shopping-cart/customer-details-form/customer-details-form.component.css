@@ -1,0 +1,17 @@
+form {
+    margin-top: 30px;
+}
+
+/* .form-group {
+    display: inline-block;
+    width: 40%;
+} */
+
+/* .form-group:nth-child(even) {
+    margin-left: 5%;
+} */
+
+label::after {
+    content: " *";
+    color: #cf0001;
+}

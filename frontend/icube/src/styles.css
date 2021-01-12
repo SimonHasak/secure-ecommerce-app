@@ -1,0 +1,28 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import 'assets/css/mobile-navbar-style.css';
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i|Poppins:300,400,500,700';
+@import 'assets/lib/font-awesome/css/font-awesome.min.css';
+@import 'assets/lib/animate/animate.min.css';
+@import 'https://fonts.googleapis.com/css2?family=Roboto&display=swap';
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    font-family: 'Roboto', sans-serif;
+    outline: none;
+}
+
+*:focus, *:active {
+    outline: none;
+}
+
+button, button:focus, button:active {
+    outline: none;
+}
+
+/* .row {
+    margin: 0;
+} */

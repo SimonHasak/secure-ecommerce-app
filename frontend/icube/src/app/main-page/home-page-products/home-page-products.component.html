@@ -1,0 +1,21 @@
+<div class="home-page-products row">
+  <div class="products-container col-12 col-md-10 offset-md-1">
+    <div class="title-home-products">
+      <div id="title">
+        <h1 class="welcome-text">Vitajte na stránke e-shopu iCUBE.</h1>
+        <h1 class="checkout-products-text">Pozrite si naše najobľúbenejšie produkty.</h1>
+      </div>
+    </div>
+    <div class="products row">
+      <div class="product-wrapper col-md-3 col-sm-6" *ngFor="let product of homePageProducts">
+        <app-product-outlook [product]="product"></app-product-outlook>
+      </div>
+    </div>
+    <div class="view-all-section">
+      <button class="mat-raised-button view-all-button" routerLink="/category">
+        View All
+      </button>
+    </div>
+  </div>
+</div>
+

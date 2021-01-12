@@ -1,0 +1,122 @@
+<div class="container-custom">
+  <header id="header" class="row">
+    <!-- <div class="container col-12 col-sm-12 col-md-10 offset-md-1"> -->
+    <div class="col-12 col-sm-12 offset-md-1 col-md-10 container">
+      <div id="logo" class="pull-left col-lg-4 col-md-4">
+        <a routerLink="/"><img src="../../assets/images/iCube_logo.png" alt="iCube Logo" title="icube logo" /></a>
+      </div>
+
+      <nav id="nav-menu-container" class="col-lg-8 col-md-8">
+        <ul class="nav-menu">
+          <li class="first-list-element"><a href="#" (click)="navigateTo(categories[0])">E-shop</a></li>
+          <li><a href="#" (click)="navigateTo(categories[1])">Ženy</a></li>
+          <li><a href="#" (click)="navigateTo(categories[2])">Muži</a></li>
+          <li><a href="#" (click)="navigateTo(categories[3])">Doplnky</a></li>
+
+          <li class="language-btn move-left"><a href="#">EN</a></li>
+          <li class="language-btn move-left left-gap"><a class="active-language" href="#">SK</a></li>
+          <li id="cart-btn" class="move-left">
+            <a routerLink="/shopping-cart"
+               [matBadge]="itemsInShoppingCartCounter"
+               [matBadgeHidden]="itemsInShoppingCartCounter <= 0"
+                matBadgeColor="warn" class="disable-before">
+              <i class="fa fa-shopping-cart" style="font-size:21px"></i>
+            </a>
+            <!-- SHOPPING CART PREVIEW -->
+            <div id="shopping-cart-preview" [class.mat-elevation-z20]="true">
+              <div *ngIf="cartItems.length > 0" class="cart-preview-container">
+                <h1>Košík</h1>
+                <i class="fa fa-caret-up cart-preview-sticker"></i>
+                <i *ngIf="isScrollUp" class="fa fa-caret-up cart-preview-scroll-btn scroll-up" (click)="cartPreviewScrollUp()"></i>
+                <div class="products-list">
+                  <div class="product-container" *ngFor="let cartItem of cartItems; let i = index">
+                    <div class="product-image">
+                      <img [src]=" cartItem.imageUrl | safeUrl " alt=" {{ cartItem.name }} ">
+                    </div>
+                    <div class="name-and-price">
+                      <div class="product-name">
+                          {{ cartItem.name }}
+                      </div>
+                      <div class="product-price">
+                          Cena: {{ cartItem.price }}€
+                      </div>
+                      <div class="product-quantity">
+                        Počet: {{cartItem.quantity}}
+                      </div>
+                    </div>
+                    <span class="remove-cart-item" (click)="removeCartItem(i, cartItem)" attr.data-item-name="{{cartItem.name}}">⨉</span>
+                  </div>
+              </div>
+                <div class="price-cart-container">
+                  <div *ngIf="cartItems.length > 4" class="scroll-down-wrapper">
+                    <i *ngIf="isScrollDown" class="fa fa-caret-down cart-preview-scroll-btn" (click)="cartPreviewScrollDown()"></i>
+                    <br>
+                  </div>
+                  
+                  <h1 id="sum">Celkom: {{ priceSum }}€</h1>
+                  <div class="checkout-btn-wrapper">
+                    <button id="checkout-btn" (click)="redirectToShoppingCart()">Zobraziť košík</button>
+                  </div>
+                </div>
+              </div>
+              
+            <div *ngIf="cartItems.length == 0" id="empty-cart">
+              <h1>Košík je prázdny</h1>
+            </div>
+            </div>
+          </li>
+          <li class="move-left">
+            <a href="#" (click)="openLoginModalEvent()">
+              <i class="fa fa-user" style="font-size:21px"></i>
+            </a>
+            <ul *ngIf="isAuthenticated">
+              <li><a href="#" (click)="logOutMethodEvent()">Log Out</a></li>
+              <li><a href="#" (click)="redirectToMyProfile()">My Profile</a></li>
+            </ul>
+          </li>
+          <li class="move-left">
+            <input type="text" class="input" placeholder="Vyhľadávanie"/>
+            <a href="#" class="trigger_search" (click)="displaySearchWindow()"><i class="fa fa-search icon"></i></a>
+        </li>
+        </ul>
+      </nav>
+    </div>
+
+    <!-- MOBILE NAVBAR-->
+    <nav id="mobile-nav" class="col-lg-8 col-md-8">
+      <ul class="nav-menu">
+        <li class="first-list-element"><a href="#" (click)="navigateTo(categories[0])">E-shop</a></li>
+        <li><a href="#" (click)="navigateTo(categories[1])">Ženy</a></li>
+        <li><a href="#" (click)="navigateTo(categories[2])">Muži</a></li>
+        <li><a href="#" (click)="navigateTo(categories[3])">Doplnky</a></li>
+        <li class="language-btn move-left"><a href="#">EN</a></li>
+        <li class="language-btn move-left left-gap"><a class="active-language" href="#">SK</a></li>
+        <li id="cart-btn" class="move-left">
+          <a routerLink="/shopping-cart">
+            <i class="fa fa-shopping-cart" style="font-size:21px"></i>
+          </a>
+        </li>
+        <li class="move-left">
+          <a href="#" (click)="openLoginModalEvent()">
+            <i class="fa fa-user" style="font-size:21px"></i>
+          </a>
+          <ul *ngIf="isAuthenticated">
+            <li><a href="#" (click)="logOutMethodEvent()">Log Out</a></li>
+            <li><a href="#" (click)="redirectToMyProfile()">My Profile</a></li>
+          </ul>
+        </li>
+        <li class="move-left">
+          <input type="text" class="input" placeholder="Vyhľadávanie"/>
+          <a href="#" class="trigger_search" (click)="displaySearchWindow()"><i class="fa fa-search icon"></i></a>
+      </li>
+      </ul>
+    </nav>
+    <!-- MOBILE NAVBAR-->
+
+  </header>
+
+  <app-search-window [subject]="subject"></app-search-window>
+
+  <a href="javascript:void(0)" class="scroll-to-top"><i class="fa fa-arrow-up"></i></a>
+</div>
+

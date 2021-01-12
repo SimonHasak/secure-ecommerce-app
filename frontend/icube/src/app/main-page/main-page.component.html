@@ -1,0 +1,20 @@
+<div id="space">.</div>
+<section id="main-page" class="row">
+    <div id="main-page-container">
+        <app-pictures-slider (isLoading)="isLoadingImageSlider($event)"></app-pictures-slider>
+        <app-home-page-products (isLoading)="isLoadingHomePageProducts($event)"></app-home-page-products>
+        <app-advertisement-panel (isLoading)="isLoadingAdvertisement($event)"></app-advertisement-panel>
+        <app-infinite-slideshow></app-infinite-slideshow>
+    </div>
+</section>
+
+<app-social-links-banner></app-social-links-banner>
+
+<ngx-spinner name="root-spinner"
+             bdColor="rgba(255, 255, 255, 0.99)"
+             size="large"
+             color="#000000"
+             type="square-jelly-box" [fullScreen]="true">
+  <p style="color: black" > Loading... </p>
+</ngx-spinner>
+

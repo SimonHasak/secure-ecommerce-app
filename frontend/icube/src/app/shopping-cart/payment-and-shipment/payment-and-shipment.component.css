@@ -1,0 +1,67 @@
+#shipment-payment-container {
+    margin-top: 30px;
+}
+
+#payment-wrapper {
+    margin-bottom: 30px;
+}
+
+.options-label {
+    font-size: 22px;
+}
+
+.options {
+    margin-top: 20px;
+    background-color: rgb(247, 247, 247);
+    padding: 0;
+    width: 80%;
+}
+
+.option {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    list-style: none;
+    padding-left: 15px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.option:not(.selected-option):hover {
+    background-color: rgb(233, 233, 233);
+}
+
+.selected-option {
+    border-radius: 5px;
+    border: 1px solid dimgray;
+    opacity: 1;
+}
+
+.one-and-half {
+  line-height: 1.5em;
+}
+
+.one-and-half td:first-child + td {
+  text-align: right;
+  font-size: 85%;
+  float:right;
+}
+
+.one-and-half td:first-child {
+  font-size: 85%;
+}
+
+.clearfix{
+  clear:both;
+}
+
+#opening-hours{
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 767px) {
+    .options {
+        width: 100%;
+    }
+
+}

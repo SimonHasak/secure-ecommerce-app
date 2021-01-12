@@ -1,0 +1,34 @@
+<form [formGroup]="FormGroup" class="row" (ngSubmit)="onSubmit()">
+  <div class="form-group col-md-6 col-xl-5 col-12">
+    <label>Meno</label>
+    <input type="text" formControlName="firstName" class="form-control" autocomplete="on" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">
+  </div>
+
+  <div class="form-group col-md-6 col-xl-5 col-12">
+    <label>Priezvisko</label>
+    <input type="text" formControlName="lastName" class="form-control" autocomplete="on" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }">
+  </div>
+
+  <div class="form-group col-md-6 col-xl-5 col-12">
+    <label>Email</label>
+    <input type="text" formControlName="email" class="form-control" autocomplete="on" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback warning">
+      <div *ngIf="f.email.errors.email">Nesprávny formát</div>
+    </div>
+  </div>
+
+  <div class="form-group col-md-6 col-xl-5 col-12">
+    <label>Adresa</label>
+    <input type="text" formControlName="address" class="form-control" autocomplete="on" [ngClass]="{ 'is-invalid': submitted && f.address.errors }">
+  </div>
+
+  <div class="form-group col-md-6 col-xl-5 col-12">
+    <label>PSČ</label>
+    <input type="text" formControlName="zipCode" class="form-control" autocomplete="on" [ngClass]="{ 'is-invalid': submitted && f.zipCode.errors }">
+    <div *ngIf="submitted && f.email.errors" class="invalid-feedback warning">
+      <div *ngIf="f.zipCode.errors.pattern">Nesprávny formát</div>
+    </div>
+  </div>
+
+  <button class="btn btn-dark" (click)="onSubmit()">Submit</button>
+</form>

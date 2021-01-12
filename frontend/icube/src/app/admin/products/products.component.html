@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="margin-top">
+
+    <div class="row">
+      <div class="add-button col float-left">
+        <td>
+          <button mat-stroked-button color="primary" [routerLink]="['add']">Add</button>
+        </td>
+      </div>
+
+      <div class="d-inline-block float-right" ngbDropdown #myDrop="ngbDropdown">
+        <button class="btn btn-outline-dark mr-2" id="dropdownManual"
+                ngbDropdownAnchor (focus)="myDrop.open()">
+          {{ filter }}
+        </button>
+        <div ngbDropdownMenu aria-labelledby="dropdownManual">
+          <button ngbDropdownItem *ngFor="let sortValue of sortingValues; let i = index" (click)="onChange(i)">
+            {{ sortValue }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Image</th>
+        <th scope="col">Code</th>
+        <th scope="col">Name</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Edit</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let product of products; let i = index">
+        <th scope="row">{{ 1 + i + (currrentPage?.pageable?.pageNumber - 1) * currrentPage?.pageable?.pageSize }}</th>
+        <td>
+          <div class="img-wrapper">
+            <img [src]=" product?.mainImage " alt=" {{ product?.name }} ">
+          </div>
+        </td>
+        <td>{{ product?.code }}</td>
+        <td>{{ product?.name }}</td>
+        <td>{{ product?.quantity }}</td>
+        <td>
+          <button mat-stroked-button color="warn" (click)="onDelete(product)">Delete</button>
+        </td>
+        <td>
+          <button mat-stroked-button color="primary" [routerLink]="['add', product.id]">Edit</button>
+        </td>
+
+      </tr>
+      </tbody>
+    </table>
+
+    <mat-card *ngIf="isLoading" style="display: flex; justify-content: center; align-items: center">
+      <mat-spinner *ngIf="isLoading" strokeWidth="3" [diameter]="100"></mat-spinner>
+    </mat-card>
+
+    <ngb-pagination *ngIf="!isLoading"
+                    [collectionSize]="currrentPage.totalElements"
+                    [(page)]="currrentPage.pageable.pageNumber"
+                    [pageSize]="currrentPage.pageable.pageSize"
+                    [maxSize]="5"
+                    [rotate]="true"
+                    [boundaryLinks]="true"
+                    (pageChange)="loadPage()">
+    </ngb-pagination>
+  </div>
+
+</div>
+
+

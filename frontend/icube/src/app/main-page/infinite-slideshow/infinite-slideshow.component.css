@@ -1,0 +1,141 @@
+body {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .row {
+    margin: 0;
+  }
+  
+  .products {
+    white-space: nowrap;
+    overflow-x: auto;
+    width: 90%;
+  }
+  
+  .infinite-slider-container {
+    background-color: #F5F5F5;
+    display: flex;
+    justify-items: center;
+    position: relative;
+    max-width: 100%;
+    width: 100vw;
+    display: flex;
+  }
+  
+  .title-home-products {
+    font-size: 30px;
+  }
+  
+  .title-home-products h1 {
+    display: flex;
+    justify-content: center;
+    margin: 5px 0;
+  }
+  
+  .view-all-section{
+    margin: 10px 0px;
+    display: flex;
+    justify-content: center;
+  }
+
+  .product-wrapper {
+    width: 21%;
+    display: inline-block;
+    margin: 0 2%;
+  }
+
+  .disable-scrollbars::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  } 
+
+  .disable-scrollbars {
+    scrollbar-width: none; 
+    -ms-overflow-style: none;
+  }
+
+
+  .slide-button {
+    
+    position: absolute;
+  }
+
+  .slide-right, .slide-left {
+    /* position: absolute;
+    top: 50%;
+    font-size: 30px; */
+  }
+
+  .slider-btn {
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: transparent;
+    font-size: 30px;
+    position: absolute;
+    top: 50%;
+    font-size: 30px;
+    cursor: pointer;
+    color: rgb(77, 77, 77);
+}
+
+  .slide-left {
+    left: 5%;
+  }
+
+  .slide-right {
+    right: 5%;
+  }
+  /*---------------TITLE SECTION--------------*/
+  /*------------------------------------------*/
+  
+  .title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+  }
+  
+  .title h1 {
+    font: 400 36px 'Roboto';
+    line-height: 42px;
+  }
+  
+  .title h2 {
+    font: italic 300 24px 'Roboto';
+    line-height: 28px;
+  }
+  
+  /*----------------MEDIA QUERIES---------------*/
+  /*--------------------------------------------*/
+  
+  @media (max-width: 1350px) {
+    .products, .product-wrapper {
+      padding: 0;
+    }
+  
+    #title .welcome-text, #title .checkout-products-text {
+      text-align: center;
+    }
+  }
+
+  @media (max-width: 850px) {
+    .product-wrapper {
+      width: 33.33%;
+      margin: 0;
+    }
+  }
+
+  @media (max-width: 575px) {
+    .product-wrapper {
+      width: 100%;
+      margin: 0;
+    }
+
+    .products {
+      width: 100%;
+    }
+  }

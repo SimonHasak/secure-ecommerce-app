@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="margin-top mb-5">
+    <ng-container *ngFor="let name of names">
+      <a style="cursor: pointer" (click)="notify()">
+        <div class="section">
+          <div class="row">
+            <span>{{ name | uppercase }}</span>
+          </div>
+        </div>
+      </a>
+    </ng-container>
+
+    <!--          <div class="button-wrapper">-->
+    <!--            <button mat-stroked-button="primary">Edit</button>-->
+    <!--          </div>-->
+
+  </div>
+</div>

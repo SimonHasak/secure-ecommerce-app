@@ -1,0 +1,185 @@
+<script src="../../admin.module.ts"></script>
+<div class="container">
+  <div class="container-nested">
+    <div class="section-left">
+      <a (click)="goBackToProducts()">
+        <div class="arrow-left">
+          <img src="assets/images/left-arrow.svg">
+        </div>
+      </a>
+    </div>
+    <div class="section-right">
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div class="form-group warning-container mt-3">
+          <label class="required">code</label>
+          <input type="text"
+                 formControlName="code"
+                 class="form-control"
+                 [ngClass]="{ 'is-invalid': f.code.touched && f.code.errors }" />
+          <div *ngIf="f.code.touched && f.code.errors" class="invalid-feedback warning">
+            <div *ngIf="f.code.errors.required">code is required</div>
+          </div>
+        </div>
+        <div class="form-group warning-container">
+          <label class="required">name</label>
+          <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': f.name.touched && f.name.errors }" />
+          <div *ngIf="f.name.touched && f.name.errors" class="invalid-feedback warning">
+            <div *ngIf="f.name.errors.required">Last Name is required</div>
+          </div>
+        </div>
+        <div class="form-group warning-container">
+          <label class="required">description</label>
+          <input type="text" formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': f.description.touched && f.description.errors }" />
+          <div *ngIf="f.description.touched && f.description.errors" class="invalid-feedback warning">
+            <div *ngIf="f.description.errors.required">description is required</div>
+          </div>
+        </div>
+
+        <div class="form-group warning-container row">
+          <div class="col">
+            <label class="required">urlName</label>
+            <input type="text" formControlName="urlName" class="form-control" [ngClass]="{ 'is-invalid': f.urlName.touched && f.urlName.errors }">
+            <div *ngIf="f.urlName.touched && f.urlName.errors" class="invalid-feedback warning">
+              <div *ngIf="f.urlName.errors.required">Url name must be filled up</div>
+            </div>
+          </div>
+
+          <button mat-stroked-button color="primary" class="h-50 mt-4"
+                  [disabled]="f.name.value == ''"
+                  (click)="generateUrlName()">Generate url name
+          </button>
+        </div>
+
+
+        <div class="form-group warning-container">
+          <label class="required">price</label>
+          <input type="number" formControlName="price" class="form-control" [ngClass]="{ 'is-invalid': f.price.touched && f.price.errors }">
+          <div *ngIf="f.price.touched && f.price.errors" class="invalid-feedback warning">
+            <div *ngIf="f.price.errors.pattern">Nesprávny formát</div>
+          </div>
+        </div>
+
+        <div class="form-group warning-container">
+          <label class="required">quantity</label>
+          <input type="number" formControlName="quantity" class="form-control" [ngClass]="{ 'is-invalid': f.quantity.touched && f.quantity.errors }">
+          <div *ngIf="f.quantity.touched && f.quantity.errors" class="invalid-feedback warning">
+            <div *ngIf="f.quantity.errors.pattern">Nesprávny formát</div>
+          </div>
+        </div>
+
+        <div class="form-group warning-container">
+          <label class="required">visibleLabel</label>
+          <input type="text" formControlName="visibleLabel"
+                 class="form-control"
+                 [matAutocomplete]="autorender"
+                 [ngClass]="{ 'is-invalid': f.visibleLabel.touched && f.visibleLabel.errors }" />
+          <div *ngIf="f.visibleLabel.touched && f.visibleLabel.errors" class="invalid-feedback warning">
+            <div *ngIf="f.visibleLabel.errors.required">visibleLabel is required</div>
+          </div>
+          <mat-autocomplete #autorender="matAutocomplete">
+            <mat-option *ngFor="let suggest of f.labels.value" [value]="suggest.name">{{ suggest.name }}</mat-option>
+          </mat-autocomplete>
+        </div>
+
+        <ng-template #tipMainImg>
+          <div class="tip-main-image-wrapper">
+            <img [src]="f.mainImage.value">
+          </div>
+        </ng-template>
+        <div class="form-group warning-container">
+          <label class="required">mainImage</label>
+          <input type="text"
+                 formControlName="mainImage"
+                 class="form-control"
+                 [matAutocomplete]="autorender2"
+                 [ngbTooltip]="tipMainImg"
+                 [ngClass]="{ 'is-invalid': f.mainImage.touched && f.mainImage.errors }" />
+          <div *ngIf="f.mainImage.touched && f.mainImage.errors" class="invalid-feedback warning">
+            <div *ngIf="f.mainImage.errors.required">mainImage is required</div>
+          </div>
+          <mat-autocomplete #autorender2="matAutocomplete">
+            <mat-option *ngFor="let suggest of fa.value" [value]="suggest">{{ suggest }}</mat-option>
+          </mat-autocomplete>
+        </div>
+
+        <div class="form-group warning-container">
+          <mat-form-field appearance="fill" class="w-50">
+            <mat-label>Categories</mat-label>
+            <mat-select formControlName="categories" multiple [compareWith]="compareByOptionId">
+              <mat-option *ngFor="let category of categoriesList" [value]="category">{{ category.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.categories.touched && f.categories.hasError('required')">You must make a selection</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group warning-container">
+          <mat-form-field appearance="fill" class="w-50">
+            <mat-label>Sizes</mat-label>
+            <mat-select formControlName="measurements" multiple [compareWith]="compareByOptionId">
+              <mat-option *ngFor="let measurement of measurementsList" [value]="measurement">{{ measurement.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.measurements.touched && f.measurements.hasError('required')">You must make a selection</mat-error>
+          </mat-form-field>
+        </div>
+
+        <div class="form-group warning-container">
+          <mat-form-field appearance="fill" class="w-50">
+            <mat-label>Labels</mat-label>
+            <mat-select formControlName="labels" multiple [compareWith]="compareByOptionId">
+              <mat-option *ngFor="let label of labelsList" [value]="label">{{ label.name }}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="f.labels.touched && f.labels.hasError('required')">You must make a selection</mat-error>
+          </mat-form-field>
+        </div>
+
+        <ng-container formArrayName="images">
+          <div *ngFor="let image of fa.controls; index as i">
+            <ng-template #tipImg>
+              <div class="tip-main-image-wrapper">
+                <img [src]="image.value">
+              </div>
+            </ng-template>
+            <div class="images-row">
+              <div class="form-group warning-container">
+                <label class="required">{{ i + 1 }}. image</label>
+                <input type="text"
+                       [formControlName]="i"
+                       class="form-control"
+                       [ngbTooltip]="tipImg"
+                       [ngClass]="{ 'is-invalid': image.touched && image.errors }" />
+                <div *ngIf="image.touched && image.errors" class="invalid-feedback warning">
+                  <div *ngIf="image.errors.required">image is required</div>
+                </div>
+              </div>
+
+              <button *ngIf="!(i == 0 && fa.length <= 1 && image?.value == '')"
+                      mat-mini-fab color="primary"
+                      aria-label="Remove image"
+                      (click)="removeAt(i)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <button *ngIf="i == fa.length - 1"
+                      mat-mini-fab color="primary"
+                      (click)="addImage()"
+                      aria-label="Add image">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </div>
+        </ng-container>
+
+      </form>
+
+      <div>
+        <button class="btn btn-dark" [disabled]="isLoading || isSubmitted || form?.invalid" (click)="onSubmit()">
+          <span *ngIf="isLoading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+        <button (click)="onClear()" [disabled]="isLoading" class="btn btn-light ml-2">Clear</button>
+      </div>
+
+    </div>
+
+
+  </div>
+</div>

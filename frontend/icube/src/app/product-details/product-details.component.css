@@ -1,0 +1,280 @@
+.row {
+    padding: 0;
+}
+
+
+#product-detail-section {
+    width: 100%;
+    margin: 0;
+    /* height: 100vh; */
+    padding-top: 180px;
+}
+
+.container {
+    height: 100%;
+    max-width: 100%;
+    margin: 0;
+  position: relative;
+}
+
+#photo-section {
+    justify-content: right;
+    height: 500px;
+}
+
+.photo-wrapper img {
+    width: 100%;
+    height: 100%;
+}
+
+.photo-wrapper {
+    max-width: 500px;
+    max-height: 450px;
+}
+
+.mini-pics {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: 80%;
+    padding: 0;
+    overflow: auto;
+    scroll-behavior: smooth;
+    margin-top: 5px;
+}
+
+.image-carousel {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 100%;
+    padding: 0;
+    align-items: center;
+}
+
+.disable-scrollbars::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+}
+
+.disable-scrollbars {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+ngb-carousel {
+    height: 100%;
+    outline: none;
+}
+
+.carousel-btn {
+    width: 30px;
+    height: 30px;
+    outline: none;
+    border: none;
+    background-color: white;
+    font-size: 30px;
+}
+
+:host ::ng-deep .carousel-item, :host ::ng-deep .carousel-inner {
+    height: 100%;
+}
+
+/*------------------------------------SMALL SCREENS & PHONES--------------------------------*/
+/*------------------------------------------------------------------------------------------*/
+@media only screen and (max-width: 767px) {
+    * {
+        text-align: center;
+        justify-content: center;
+    }
+
+    .row {
+        margin: 0;
+    }
+
+    #product-detail-section {
+        padding-top: 120px;
+    }
+
+    .photo-wrapper {
+        max-width: 100%;
+        height: 90%;
+        padding: 0;
+    }
+
+    #photo-section {
+        justify-content: center;
+        height: 50vh;
+    }
+
+    .image-carousel{
+        display: none;
+    }
+
+}
+
+.mini-pic-wrapper {
+    max-width: 90px;
+    height: 90px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.mini-pic-wrapper img{
+    width: 100%;
+    height: 100%;
+}
+
+/*---------------------------PRODUCT INFO-----------------------*/
+#product-info {
+    width: 100%;
+    height: 50%;
+}
+
+#product-info .product-name-wrapper h1 {
+    font: 500 40px "PT Serif",serif;
+    margin: 0;
+}
+
+#product-info .product-price-wrapper h1 {
+    font: 500 40px "PT Serif",serif;
+    margin: 0;
+}
+
+.sizes-tab {
+    margin-top: 25px;
+}
+
+.sizes-tab .sizes h1{
+    margin-top: 30px;
+    font: 500 30px "PT Serif",serif;
+}
+
+.row-custom {
+  display: inline-flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.sizes {
+    list-style-type: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+}
+
+.sizes li {
+    padding: 5px;
+    border: 1px solid #dbdbdb;
+    font-weight: 900;
+    margin-right: 10px;
+    text-align: center;
+    width: auto;
+}
+
+.sizes li:hover{
+    background-color: #dbdbdb;
+    opacity: 0.7;
+    transition: 0.5s;
+    cursor: pointer;
+}
+
+#pick-color-text {
+    font-size: 23px;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 15px;
+}
+
+
+/*------------------------PRODUCT INFO----------------------*/
+/*----------------------------------------------------------*/
+.add-product-container {
+    height: 80px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-top: 30px;
+}
+
+.quantity-wrapper {
+    display: inline-block;
+    height: 40px;
+    padding: 0;
+    margin-right: 10px;
+}
+
+.quantity-input {
+    width: 48px;
+    height: 40px;
+    text-align: center;
+    font-size: 15px;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+#add-button {
+    width: 245px;
+    background-color: #2faaab;
+    color: white;
+    border: none;
+    height: 40px;
+    font: 500 23px 'Roboto',serif;
+    opacity: 0.9;
+}
+
+.add-to-cart-button-wrapper {
+    display: inline-block;
+}
+
+@media only screen and (max-width: 350px) {
+    #add-button {
+        width: 100%;
+        font-size: 18px;
+        /* font: 500 18px 'Roboto',serif; */
+
+    }   
+    .add-to-cart-button-wrapper {
+        padding: 0;
+        width: 75%;
+    }
+}
+
+#add-button:hover {
+    transition: 0.5s;
+    opacity: 0.6;
+}
+
+/*---------------------------PRODUCT DESCRIPTION-----------------------------*/
+/*---------------------------------------------------------------------------*/
+
+#description-section {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.description-title-wrapper {
+    height: fit-content;
+}
+
+/* #description-section h1 {
+
+} */
+
+.description-wrapper {
+    border: 1px solid dimgray;
+    padding: 15px;
+}
+
+.loading-spinner {
+  position: absolute;
+  left: 50%;
+  /*transform: translate(-50%, 0);*/
+  top: 20%;
+}

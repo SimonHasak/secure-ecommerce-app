@@ -1,0 +1,144 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="sk">
+<head>
+  <meta http-equiv="Content-Type"  content="text/html charset=UTF-8" />
+  <style>
+
+    table{
+      margin: auto;
+      width: 50%;
+      font-size: 16px;
+    }
+    @media only screen and (max-width: 768px){
+      body{
+        margin: 0;
+        padding: 0;
+      }
+      table{
+        margin: auto;
+        width: 100%;
+        font-size: 16px;
+      }
+      h1{
+        font-size: 18px;
+        color: #7e6675  ;
+      }
+
+    }
+    h2{
+      color: #7e6675;
+
+    }
+    h1{
+      font-size: 5vh;
+      color: #7e6675;
+    }
+    tr,td{
+    }
+    .full{
+      width: 100%;
+      margin: auto;
+    }
+    .half{
+      width: 50%;
+    }
+    .adapt-img{
+        width: 60%;
+        height: auto;
+    }
+  </style>
+
+</head>
+<body>
+  <table>
+  <thead>
+    <tr>
+      <td class="full" colspan="2" align="center"><a target="_blank" href="https://viewstripo.email/"><img class="adapt-img" src="https://i-cube-frontend.herokuapp.com/assets/images/iCube_logo.png" alt width="244"></a></td>
+    </tr>
+    <tr>
+      <td colspan="2" align="center" style="border-bottom: none; border-top: 1px solid black";><h1>VAŠA OBJEDNÁVKA BOLA PRIJATÁ</h1></td>
+    </tr>
+    <tr>
+      <td colspan="2" style="background-color: #f8f8f8"><p style="color: #242424;"><p align="center" th:text="${'Dobrý deň'+mail.getOrder().getBuyerName() +', obdržali sme od Vás objednávku č.'+ mail.getOrder().getId() +' a práve na nej pracujeme.'}">Dobrý deň, obdržali sme od Vás objednávku č. 000000 a práve na nej pracujeme.<br></p>
+        <p style="color: #242424;" align="center">Akonáhle ju pripravíme, budeme Vás kontaktovať.<br></p>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td colspan="2" align="center" style="border-bottom: 1px solid black"><h1>OBJEDNANÉ POLOŽKY</h1></td>
+    </tr>
+      <tr th:each="item: ${mail.getOrder().getCartItems()}">
+        <td class="half" align="center" style="font-size:0"><a target="_blank" href="_blank"><img class="adapt-img" th:src="${item.getImage()}" src="https://i-cube-frontend.herokuapp.com/assets/images/visualisations/_doplnky/siltovka_front_TUKE-1952.jpg" alt width="244"></a></td>
+        <td class="half">
+          <p th:text="${item.getName()}"><b>Šiltovka TUKE 1952</b></p>
+          <p th:text="${'Veľkosť: ' + item.getMeasurement().getMeasurementName()}">Veľkosť: XL</p>
+          <p th:text="${'Cena: ' + item.getPrice() + '€'}">Cena: 12,49€</p>
+          <p th:text="${'Počet: ' + item.getQuantity()}">Počet: 1</p>
+        </td>
+    </tr>
+    <td colspan="2" style="background-color: #eeeeee; border-top: 1px solid black; border-bottom: 1px solid black; " >
+    <table>
+      <tbody>
+      <tr >
+        <td>Medzisúčet</td>
+        <td th:text="${mail.getSubtotalPrice()} + '€'">0.0€</td>
+      </tr>
+      <tr>
+        <td>Náklady na doručenie</td>
+        <td th:text="${mail.getShippingPrice()} + '€'">0.0€</td>
+      </tr>
+      <tr>
+        <td>Zľavy</td>
+        <td th:text="${mail.getDiscount() + '€'}">0.0€</td>
+      </tr>
+      <tr>
+        <td>Spolu</td>
+        <td th:text="${mail.getTotalPrice()}">0.0€</td>
+      </tr>
+      </tbody>
+      </td>
+    </table>
+  </tbody>
+
+  <tfoot style="background-color: #eeeeee">
+  <tr>
+    <td colspan="2" align="center"><h1>OBJEDNÁVKA A DODACIA ADRESA</h1></td>
+  </tr>
+  <tr>
+    <td align="center"><h2>PODROBNOSTI OBJEDNÁVKY</h2></td>
+    <td align="center"><h2>DODACIA ADRESA</h2></td>
+
+  </tr>
+  <tr>
+    <td style="text-indent: 5%">
+      <p th:text="${'<b>Číslo objednávky:</b> ' + mail.getOrder().getId()}"><b>Číslo objednávky:</b> 000000</p>
+      <p th:text="${'<b>Spôsob platby:</b>' + mail.getPaymentType()}"><b>Spôsob platby:</b> VISA</p>
+      <p th:text="${'<b>Spôsob doručenia:</b> ' + mail.getShippingType()}"><b>Spôsob doručenia:</b> DHL</p>
+      <p th:text="${'<b>Dátum objednávky:</b> ' + mail.getOrder().getCreateTime()}"><b>Dátum objednávky:</b> 12.4.2021</p>
+    </td>
+
+
+    <td align="center">
+      <p th:text="${mail.getOrder().getBuyerName()}">Jozef Mrkva</p>
+      <p th:text="${mail.getOrder().getBuyerPhone()}">+421 777 777 777</p>
+      <p th:text="${mail.getOrder().getBuyerAddress()}">Nekonečná, 32</p>
+      <p>Košice</p>
+      <p>040 01</p>
+    </td>
+
+  </tr>
+  <tr>
+    <td colspan="2" align="center" style="background-color: white">
+      <a href><img title="Twitter" src="https://stripo.email/cabinet/assets/editor/assets/img/social-icons/circle-gray/twitter-circle-gray.png" alt="Tw" width="32" height="32"></a>
+      <a href><img title="Facebook" src="https://stripo.email/cabinet/assets/editor/assets/img/social-icons/circle-gray/facebook-circle-gray.png" alt="Fb" width="32" height="32"></a>
+      <a href><img title="Youtube" src="https://stripo.email/cabinet/assets/editor/assets/img/social-icons/circle-gray/youtube-circle-gray.png" alt="Yt" width="32" height="32"></a>
+    </td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center" style="background-color: white">iCube</td>
+  </tr>
+  </tfoot>
+  </table>
+</body>
+</html>

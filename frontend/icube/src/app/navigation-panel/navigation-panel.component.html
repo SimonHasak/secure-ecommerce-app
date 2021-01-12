@@ -1,0 +1,15 @@
+<app-navigation-panel-admin *ngIf="isAdmin"
+                            (logOutEvent)="logOut()"
+                            [isAdmin]="this.isAdmin"
+                            [isAuthenticated]="this.isAuthenticated"
+                            >
+</app-navigation-panel-admin>
+
+<app-navigation-panel-user *ngIf="!isAdmin"
+                           (loginEvent)="openLoginModal()"
+                           (logOutEvent)="logOut()"
+                           [isAdmin]="this.isAdmin"
+                           [isAuthenticated]="this.isAuthenticated"
+                           >
+</app-navigation-panel-user>
+

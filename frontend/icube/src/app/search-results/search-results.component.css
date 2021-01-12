@@ -1,0 +1,9 @@
+.search-results-container {
+    margin-top: 125px;
+    min-height: 55vh;
+}
+
+.search-result-title {
+    margin-top: 160px;
+    margin-bottom: 50px;
+}

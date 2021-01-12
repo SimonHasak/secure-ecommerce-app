@@ -1,0 +1,17 @@
+<a class="item" routerLink="{{ routeToRoot }}product-detail/{{ product.urlName }}">
+
+  <div class="product-price-outlook" >
+    <span *ngIf="product.quantity == 0" class="sold-out-label">VYPREDANÉ</span>
+    <!-- <div class="product img-hover-zoom" [style.width.px]="width" [style.height.px]="height"> -->
+    <div class="product img-hover-zoom">
+      <img class="tenor" src="{{ product.mainImage }}" alt="{{ product.name }}">
+    </div>
+
+    <div class="title-price-wapper">
+      <p class="product-name">{{ product.name }}</p>
+      <p class="product-price">{{ product.price }} €</p>
+    </div>
+  </div>
+</a>
+
+<router-outlet></router-outlet>

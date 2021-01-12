@@ -1,0 +1,21 @@
+#main-page {
+    margin: 0;
+    width: 100%;
+}
+
+#main-page-container {
+    width: 100%;
+}
+
+#space {
+    color:white;
+    height: 120px;
+}
+
+app-infinite-slideshow {
+    width: 100%;
+}
+
+app-pictures-slider {
+    width: 100%;
+}
