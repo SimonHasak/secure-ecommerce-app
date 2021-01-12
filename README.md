@@ -1,7 +1,24 @@
 # icube_website
 
-Database set up: https://git.kpi.fei.tuke.sk/jz543fm/icube_website/-/issues/14
+Requirements: Java 11
 
+Launch the app within the Ide or with the maven. (mvn clean install and mvn spring:boot-run)
+
+Backend is running on port 8080 on localhost.
+
+http://localhost:8080
+
+Automatic redirection to swagger / OpenAPI.
+
+Credentials: 
+   Admin: 
+      -name: admin@admin.com 
+      -password: admin123
+   User:
+      -name: user@user.com
+      -password: user123
+
+User can be created with Rest Api. Admin only as insertion to the database with data.sql for example.
 
 ## Docker-compose 
 
